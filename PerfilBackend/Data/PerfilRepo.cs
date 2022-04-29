@@ -1,4 +1,5 @@
-﻿using PerfilBackend.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PerfilBackend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +34,20 @@ namespace PerfilBackend.Data
             return _context.Perfiles.FirstOrDefault(p => p.Id == id);
         }
 
+        public void UpdatePerfil(int id,Perfil perf){
+             _context.Entry(perf).State = EntityState.Modified;
+        }
+
+        public void DeletePerfil(Perfil perf){
+            _context.Perfiles.Remove(perf);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
         }
+
+
+
     }
 }

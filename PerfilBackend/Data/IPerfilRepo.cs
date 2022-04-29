@@ -10,5 +10,9 @@ namespace PerfilBackend.Data
         IEnumerable<Perfil> GetAllPerfiles();
         Perfil GetPerfilById(int id);
         void CreatePerfil(Perfil perf);
+
+        void UpdatePerfil(int id,Perfil perf);
+
+        void DeletePerfil(Perfil perf);
     }
 }

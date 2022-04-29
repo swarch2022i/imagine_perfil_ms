@@ -5,6 +5,7 @@ using PerfilBackend.Dtos;
 using AutoMapper;
 using System.Collections.Generic;
 using System;
+using Microsoft.EntityFrameworkCore;
 
 namespace PerfilBackend.Controllers
 {
@@ -24,7 +25,7 @@ namespace PerfilBackend.Controllers
         [HttpGet("getPerfiles", Name = "GetPerfiles")]
         public ActionResult<IEnumerable<PerfilReadDto>> GetPerfiles()
         {
-            Console.WriteLine("--> opteniendo perfiles..");
+            Console.WriteLine("--> opteniendo perfiles.. 2");
             var perfilItem = _repository.GetAllPerfiles();
 
             return Ok(_mapper.Map<IEnumerable<PerfilReadDto>>(perfilItem));
@@ -51,6 +52,30 @@ namespace PerfilBackend.Controllers
 
 
             return CreatedAtRoute(nameof(GetPerfilById), new { Id = perfilReadDto.Id }, perfilReadDto);
+        }
+
+        [HttpPut("putPerfil/{id}")]
+        public ActionResult PutPerfil(int id,Perfil perf)
+        {
+            if(id != perf.Id)
+            {
+                return BadRequest();
+            }
+            _repository.UpdatePerfil(id,perf);
+            _repository.SaveChanges();
+            return NoContent();
+        }
+
+        [HttpDelete("deletePerfil/{id}")]
+        public ActionResult DeletePerfil(int id)
+        {
+            var perf = _repository.GetPerfilById(id);
+            if(perf != null){
+                _repository.DeletePerfil(perf);
+                _repository.SaveChanges();
+                return Ok(_mapper.Map<PerfilReadDto>(perf));
+            }
+            return NotFound();
         }
     }
 }

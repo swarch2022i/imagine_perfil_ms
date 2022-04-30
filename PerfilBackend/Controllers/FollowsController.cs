@@ -65,14 +65,14 @@ namespace PerfilBackend.Controllers
             _repository.CreateFollows(follModel);
             _repository.SaveChanges();
 
-            var perfilReadDto = _mapper.Map<PerfilReadDto>(follModel);
+            var followsReadDto = _mapper.Map<FollowsReadDto>(follModel);
 
 
-            return CreatedAtRoute(nameof(GetPerfilById), new { Id = perfilReadDto.Id }, perfilReadDto);
+            return CreatedAtRoute(nameof(GetPerfilById), new { Id = followsReadDto.Id }, followsReadDto);
         }
 
         [HttpDelete("deleteFollows/{id}")]
-        public ActionResult<IEnumerable<FollowsReadDto>> deleteFollows(int id)
+        public ActionResult deleteFollows(int id)
         {
             Console.WriteLine("-->Usuario a sido borrado");
              var follItem = _repository.GetFollowsByid(id);

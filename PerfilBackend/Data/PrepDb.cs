@@ -26,10 +26,10 @@ namespace PerfilBackend.Data
                 Console.WriteLine("--> enviando Datos");
 
                 context.Perfiles.AddRange(
-                    new Perfil() {Nombre="un nombre", IdImagenPerfil ="dnawdawnd",Texto="hola",Numfollowers=0,Numfollows=0,IdUsuario = 1 },
-                    new Perfil() {Nombre="do nombre", IdImagenPerfil ="dnawdawnd4",Texto="hola2",Numfollowers=0,Numfollows=0, IdUsuario = 2},
-                    new Perfil() {Nombre = "tr nombre", IdImagenPerfil = "5eawddaw", Texto = "hola3", Numfollowers = 0, Numfollows = 0, IdUsuario = 3},
-                    new Perfil() {Nombre = "cu nombre", IdImagenPerfil = "325fawdawd", Texto = "hola3", Numfollowers = 0, Numfollows = 0, IdUsuario = 4}
+                    new Perfil() {Nombre="un nombre", IdImagenPerfil ="dnawdawnd",Texto="hola",Numfollowers=0,NumfollowBy=0,IdUsuario = "1" },
+                    new Perfil() {Nombre="do nombre", IdImagenPerfil ="dnawdawnd4",Texto="hola2",Numfollowers=0,NumfollowBy=0, IdUsuario = "2"},
+                    new Perfil() {Nombre = "tr nombre", IdImagenPerfil = "5eawddaw", Texto = "hola3", Numfollowers = 0, NumfollowBy = 0, IdUsuario = "3"},
+                    new Perfil() {Nombre = "cu nombre", IdImagenPerfil = "325fawdawd", Texto = "hola3", Numfollowers = 0, NumfollowBy = 0, IdUsuario = "4"}
                     );
                 context.SaveChanges();
             }

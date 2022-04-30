@@ -11,5 +11,6 @@ namespace PerfilBackend.Data
         }
 
         public DbSet<Perfil> Perfiles { get; set; }
+        public DbSet<Follows> FollowsT { get; set; }
     }
 }

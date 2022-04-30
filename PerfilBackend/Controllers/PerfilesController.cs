@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PerfilBackend.Controllers
 {
-    [Route("api/Perfiles")]
+    [Route("api/perfiles")]
     [ApiController]
     public class PerfilesController : ControllerBase
     {
@@ -34,6 +34,17 @@ namespace PerfilBackend.Controllers
         public ActionResult<PerfilReadDto> GetPerfilById(int id)
         {
             var perfilItem = _repository.GetPerfilById(id);
+            if (perfilItem != null)
+            {
+                return Ok(_mapper.Map<PerfilReadDto>(perfilItem));
+            }
+            return NotFound();
+        }
+
+        [HttpGet("getPerfilByIdUsuario")]
+        public ActionResult<PerfilReadDto> GetPerfilBydUsuario(String idUsuario)
+        {
+            var perfilItem = _repository.GetPerfilByIdUsuario(idUsuario);
             if (perfilItem != null)
             {
                 return Ok(_mapper.Map<PerfilReadDto>(perfilItem));

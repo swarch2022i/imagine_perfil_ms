@@ -34,6 +34,11 @@ namespace PerfilBackend.Data
             return _context.Perfiles.FirstOrDefault(p => p.Id == id);
         }
 
+        public Perfil GetPerfilByIdUsuario(string id)
+        {
+            return _context.Perfiles.FirstOrDefault(p => p.IdUsuario == id);
+        }
+
         public void UpdatePerfil(int id,Perfil perf){
              _context.Entry(perf).State = EntityState.Modified;
         }

@@ -40,6 +40,7 @@ namespace PerfilBackend
             options.UseSqlServer($"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}"));
 
             services.AddScoped<IPerfilRepo, PerfilRepo>();
+            services.AddScoped<IFollowsRepo, FollowsRepo>();
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>

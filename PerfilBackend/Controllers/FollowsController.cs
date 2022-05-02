@@ -42,19 +42,19 @@ namespace PerfilBackend.Controllers
             return NotFound();
         }
 
-        [HttpGet("getAllFollowersById")]
-        public ActionResult<IEnumerable<FollowsReadDto>> GetFollowersById(string id)
+        [HttpGet("getAllFollowersById/{idUsuario}")]
+        public ActionResult<IEnumerable<FollowsReadDto>> GetFollowersById(string idUsuario)
         {
             Console.WriteLine("--> opteniendo Follows.. 2");
-            var follItem = _repository.GetAllFollowersByid(id);
+            var follItem = _repository.GetAllFollowersByid(idUsuario);
             return Ok(_mapper.Map<IEnumerable<FollowsReadDto>>(follItem));
         }
 
-        [HttpGet("getAllFollowsById")]
-        public ActionResult<IEnumerable<FollowsReadDto>> GetFollowsById(string id)
+        [HttpGet("getAllFollowsById/{idUsuario}")]
+        public ActionResult<IEnumerable<FollowsReadDto>> GetFollowsById(string idUsuario)
         {
             Console.WriteLine("--> opteniendo Follows.. 3");
-            var follItem = _repository.GetAllFollowsByid(id);
+            var follItem = _repository.GetAllFollowsByid(idUsuario);
             return Ok(_mapper.Map<IEnumerable<FollowsReadDto>>(follItem));
         }
 

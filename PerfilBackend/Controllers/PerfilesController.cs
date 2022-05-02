@@ -41,7 +41,7 @@ namespace PerfilBackend.Controllers
             return NotFound();
         }
 
-        [HttpGet("getPerfilByIdUsuario")]
+        [HttpGet("getPerfilByIdUsuario/{idUsuario}")]
         public ActionResult<PerfilReadDto> GetPerfilBydUsuario(String idUsuario)
         {
             var perfilItem = _repository.GetPerfilByIdUsuario(idUsuario);
@@ -55,6 +55,8 @@ namespace PerfilBackend.Controllers
         [HttpPost("createPerfil")]
         public ActionResult<PerfilReadDto> CreatePerfil(PerfilCreateDto perfilCre)
         {
+            perfilCre.NumfollowBy = 0;
+            perfilCre.Numfollowers = 0;
             var perfilModel = _mapper.Map<Perfil>(perfilCre);
             _repository.CreatePerfil(perfilModel);
             _repository.SaveChanges();

@@ -83,7 +83,8 @@ namespace PerfilBackend.Controllers
             perfilItem.Numfollowers = perf.Numfollowers;
             _repository.UpdatePerfil(perfilItem);
             _repository.SaveChanges();
-            return Ok();
+            var perfilReadDto = _mapper.Map<PerfilReadDto>(perfilItem);
+            return CreatedAtRoute(nameof(GetPerfilById), new { Id = perfilReadDto.Id }, perfilReadDto);
         }
 
         [HttpDelete("deletePerfil/{id}")]

@@ -67,16 +67,23 @@ namespace PerfilBackend.Controllers
             return CreatedAtRoute(nameof(GetPerfilById), new { Id = perfilReadDto.Id }, perfilReadDto);
         }
 
-        [HttpPut("putPerfil/{id}")]
-        public ActionResult PutPerfil(int id,Perfil perf)
+        [HttpPut("putPerfil/{idUsuario}")]
+        public ActionResult PutPerfil(string idUsuario,PerfilCreateDto perf)
         {
-            if(id != perf.Id)
-            {
+            var perfilItem = _repository.GetPerfilByIdUsuario(idUsuario);
+
+            if(perfilItem == null){
                 return BadRequest();
             }
-            _repository.UpdatePerfil(id,perf);
+            Console.WriteLine("-->se encontro al perfil");
+            perfilItem.IdImagenPerfil = perf.IdImagenPerfil;
+            perfilItem.Nombre = perf.Nombre;
+            perfilItem.Texto = perf.Texto;
+            perfilItem.NumfollowBy = perf.NumfollowBy;
+            perfilItem.Numfollowers = perf.Numfollowers;
+            _repository.UpdatePerfil(perfilItem);
             _repository.SaveChanges();
-            return NoContent();
+            return Ok();
         }
 
         [HttpDelete("deletePerfil/{id}")]

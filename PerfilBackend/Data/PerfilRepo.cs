@@ -39,8 +39,8 @@ namespace PerfilBackend.Data
             return _context.Perfiles.FirstOrDefault(p => p.IdUsuario == id);
         }
 
-        public void UpdatePerfil(int id,Perfil perf){
-             _context.Entry(perf).State = EntityState.Modified;
+        public void UpdatePerfil(Perfil perf){
+            _context.Update(perf);
         }
 
         public void DeletePerfil(Perfil perf){

@@ -10,7 +10,7 @@ namespace PerfilBackend.Data
         Perfil GetPerfilById(int id);
         Perfil GetPerfilByIdUsuario(string id);
         void CreatePerfil(Perfil perf);
-        void UpdatePerfil(int id,Perfil perf);
+        void UpdatePerfil(Perfil perf);
         void DeletePerfil(Perfil perf);
     }
 }

@@ -11,9 +11,7 @@ namespace PerfilBackend.Dtos
         [Required]
         public string IdImagenPerfil { get; set; }
         public string Texto { get; set; }
-        [Required]
         public int NumfollowBy { get; set; }
-        [Required]
         public int Numfollowers { get; set; }
     }
 }
